@@ -1,0 +1,105 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+li {
+    list-style-type: none;
+}
+
+ol {
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.items {
+    border: 2px solid black;
+    border-radius: 5px;
+    width: 80%;
+}
+
+.Phonebook_header {
+    display: block;
+    text-align: center;
+    border-bottom: 2px solid black;
+    padding: 10px 0;
+    background-color: rgb(233, 233, 233);
+}
+
+.Phonebook_nav {
+    text-align: center;
+    border-bottom: 2px solid black;
+}
+
+.Phonebook_nav span {
+    text-align: center;
+    display: inline-block;
+    width: 18%;
+    border-right: 2px solid black;
+    padding: 15px 0;
+}
+
+.Phonebook_nav span:last-child {
+    border-right: none !important;
+}
+
+.Phonebook_nav span:first-child {
+    text-align: start;
+    width: 3%;
+}
+
+.phoneBookForm {
+    text-align: center;
+    font-size: 14px;
+}
+
+.phoneBookForm li span {
+    text-align: center;
+    display: inline-block;
+    width: 18%;
+    padding: 15px 0;
+}
+
+.phoneBookForm li {
+    border-bottom: 2px solid black;
+}
+
+.phoneBookForm span:first-child {
+    text-align: start;
+    width: 3%;
+}
+
+.addNew {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 25px;
+    padding: 15px 0;
+}
+
+.addNew input {
+    width: 14%;
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+}
+
+.addNew select {
+    border: none;
+    border-bottom: 2px solid black;
+    font-size: 14px;
+    outline: none;
+}
+
+/* .items span:hover {
+    background-color: black;
+} */
