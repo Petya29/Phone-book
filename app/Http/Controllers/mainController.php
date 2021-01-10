@@ -19,8 +19,30 @@ class mainController extends Controller
         $newItem->surname = $req->input('surname');
         $newItem->email = $req->input('email');
         $newItem->phone = $req->input('phone');
-        $newItem->category = $req->input('category');
-        
+        $newItem->category = $req->get('category');
+
+        $newItem->save();
+
+        return redirect('/');
+    }
+
+    public function addNew() {
+        return view('addNewItem');
+    }
+
+    public function updateItem($id) {
+        $item = new bookItem;
+        return view('updateItem', ['data' => $item->find($id)]);
+    }
+
+    public function updateItemSubmit($id, Request $req) {
+        $newItem = bookItem::find($id);
+        $newItem->name = $req->input('name');
+        $newItem->surname = $req->input('surname');
+        $newItem->email = $req->input('email');
+        $newItem->phone = $req->input('phone');
+        $newItem->category = $req->get('category');
+
         $newItem->save();
 
         return redirect('/');

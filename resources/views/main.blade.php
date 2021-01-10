@@ -17,10 +17,9 @@
                 <span>Surname</span>
                 <span>Email</span>
                 <span>Phone</span>
-                <span>category</span>
+                <span>Category</span>
             </div>
-            <form action="/" method="post" class="phoneBookForm">
-                @csrf
+            <div class="phoneBookForm">
                 <ol>
                     @foreach ($items as $item)
                         <li>
@@ -30,25 +29,17 @@
                             <span>{{ $item->email }}</span>
                             <span>{{ $item->phone }}</span>
                             <span>{{ $item->category }}</span>
+                            <a href="{{ route('item-update', $item->id) }}">
+                                <button>&#9998;</button>
+                            </a>
                         </li>
                     @endforeach
                 </ol>
-                <div class="addNew">
-                    <input type="text" placeholder="Enter name" name="name">
-                    <input type="text" placeholder="Enter surname" name="surname">
-                    <input type="text" placeholder="Enter email" name="email">
-                    <input type="text" placeholder="Enter phone" name="phone">
-                    {{-- <input type="text" placeholder="Enter category" name="category"> --}}
-                    <select name="chooseCategory">
-                        <option value="Student">Student</option>
-                        <option value="Programmer">Programmer</option>
-                        <option value="Driver">Driver</option>
-                        <option value="Teacher">Teacher</option>
-                        <option value="Another">Another</option>
-                    </select>
-                    <button type="submit" name="btn_addNew">Add</button>
-                </div>
-            </form>
+
+                <a href="/addNew">
+                    <button type="button" class="Btn">Add New</button>
+                </a>
+            </div>
         </div>
     </div>
 

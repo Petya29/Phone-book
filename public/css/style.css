@@ -32,7 +32,7 @@ ol {
     display: block;
     text-align: center;
     border-bottom: 2px solid black;
-    padding: 10px 0;
+    padding: 20px 0;
     background-color: rgb(233, 233, 233);
 }
 
@@ -42,7 +42,7 @@ ol {
 }
 
 .Phonebook_nav span {
-    text-align: center;
+    /* text-align: center; */
     display: inline-block;
     width: 18%;
     border-right: 2px solid black;
@@ -100,6 +100,44 @@ ol {
     outline: none;
 }
 
-/* .items span:hover {
-    background-color: black;
-} */
+.addBtn {
+    margin: 10px 0 10px 30%;
+}
+
+.newItems {
+    border: 2px solid black;
+    border-radius: 5px;
+}
+
+.createNewItem label {
+    display: inline-block;
+    margin: 20px 50px;
+    width: 10%;
+}
+
+.createNewItem input {
+    border: none;
+    border-bottom: 2px solid black;
+    outline: none;
+    margin-right: 50px;
+}
+
+.Btn {
+    outline: none;
+    padding: 10px 40px;
+    cursor: pointer;
+    background-color: rgb(145, 241, 50);
+    border-radius: 5px;
+}
+
+.phoneBookForm a button {
+    margin: 10px;
+}
+
+.backBtn {
+    padding: 5px 5px;
+    margin: 10px 0 10px 38%;
+    border-radius: 4px;
+    cursor: pointer;
+    outline: none;
+}
