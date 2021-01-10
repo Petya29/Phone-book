@@ -147,3 +147,25 @@ ol {
 .upd_del {
     margin-top: -15px;
 }
+
+.upd_del a {
+    text-decoration: none;
+}
+
+.siteSearch {
+    text-align: center;
+    margin-top: 25px;
+}
+
+.siteSearch input {
+    width: 50%;
+    text-align: center;
+    outline: none;
+    border-radius: 3px;
+}
+
+.siteSearch button {
+    outline: none;
+    background-color: rgb(123, 206, 206);
+    border-radius: 5px;
+}

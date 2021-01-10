@@ -54,4 +54,18 @@ class mainController extends Controller
         $items = App\Models\bookItem::all();   // with model
         return view('main', compact('items'));
     }
+
+    public function siteSearch(Request $req) {
+        $query = $req->input('query');
+
+        if(!$query){
+            return redirect('/');
+        }
+
+        $items = bookItem::where('name', 'LIKE', "%{$query}%")
+        ->orWhere('phone', 'LIKE', "%{$query}%")
+        ->get();
+
+        return view('main', compact('items'));
+    }
 }

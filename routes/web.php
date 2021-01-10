@@ -14,4 +14,6 @@ Route::get('/item/{id}/update', [mainController::class, 'updateItem'])->name('it
 
 Route::post('/item/{id}/update', [mainController::class, 'updateItemSubmit'])->name('item-update-submit');
 
-Route::get('/{id}', [mainController::class, 'deleteItem'])->name('delete-item');
+Route::get('/del/{id}', [mainController::class, 'deleteItem'])->name('delete-item');
+
+Route::get('/search', [mainController::class, 'siteSearch'])->name('site-search');

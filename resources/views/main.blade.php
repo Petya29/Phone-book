@@ -8,6 +8,13 @@
 </head>
 <body>
 
+    <form method="GET" action="{{ route('site-search') }}">
+        <div class="siteSearch">
+            <input type="text" placeholder="Search" name="query">
+            <button type="submit">Search</button>
+        </div>
+    </form>
+
     <div class="wrapper">
         <div class="items">
             <span class="Phonebook_header">PhoneBook</span>
@@ -47,7 +54,7 @@
             </div>
         </div>
     </div>
-
+    
     <script src="{{ asset("js/main.js") }}"></script>
 </body>
 </html>
