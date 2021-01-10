@@ -47,4 +47,11 @@ class mainController extends Controller
 
         return redirect('/');
     }
+
+    public function deleteItem($id) {
+        bookItem::find($id)->delete();
+        
+        $items = App\Models\bookItem::all();   // with model
+        return view('main', compact('items'));
+    }
 }

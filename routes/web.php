@@ -13,3 +13,5 @@ Route::get('/addNew', [mainController::class, 'addNew']);
 Route::get('/item/{id}/update', [mainController::class, 'updateItem'])->name('item-update');
 
 Route::post('/item/{id}/update', [mainController::class, 'updateItemSubmit'])->name('item-update-submit');
+
+Route::get('/{id}', [mainController::class, 'deleteItem'])->name('delete-item');

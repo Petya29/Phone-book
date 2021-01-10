@@ -12,7 +12,7 @@
         <div class="items">
             <span class="Phonebook_header">PhoneBook</span>
             <div class="Phonebook_nav">
-                <span>№</span>
+                <span>id</span>
                 <span>Name</span>
                 <span>Surname</span>
                 <span>Email</span>
@@ -29,9 +29,14 @@
                             <span>{{ $item->email }}</span>
                             <span>{{ $item->phone }}</span>
                             <span>{{ $item->category }}</span>
-                            <a href="{{ route('item-update', $item->id) }}">
-                                <button>&#9998;</button>
-                            </a>
+                            <div class="upd_del">
+                                <a href="{{ route('item-update', $item->id) }}">
+                                    <button>&#9998;</button>
+                                </a>
+                                <a href="{{ route('delete-item', $item->id) }}">
+                                    <button>&#10006;</button>
+                                </a>
+                            </div>    
                         </li>
                     @endforeach
                 </ol>

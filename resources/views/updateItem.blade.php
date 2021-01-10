@@ -28,7 +28,14 @@
                     <input type="text" placeholder="Enter phone" name="phone" value="{{ $data->phone }}"><br>
 
                     <label for="category">Category:</label>
-                    <input type="text" placeholder="Enter category" name="category" value="{{ $data->category }}"><br>
+                    {{-- <input type="text" placeholder="Enter category" name="category" value="{{ $data->category }}"><br> --}}
+                    <select name="category" autofocus="{{ $data->category }}">
+                        <option>Student</option>
+                        <option>Programmer</option>
+                        <option>Teacher</option>
+                        <option>Driver</option>
+                        <option>Another</option>
+                    </select>
 
                     <button type="submit" class="Btn addBtn">Update  </button>
 

@@ -14,7 +14,7 @@ ol {
 }
 
 .wrapper {
-    position: fixed;
+    /* position: fixed; */
     height: 100%;
     width: 100%;
     display: flex;
@@ -23,6 +23,7 @@ ol {
 }
 
 .items {
+    margin: 25px 0;
     border: 2px solid black;
     border-radius: 5px;
     width: 80%;
@@ -105,6 +106,7 @@ ol {
 }
 
 .newItems {
+    margin-top: 5%;
     border: 2px solid black;
     border-radius: 5px;
 }
@@ -140,4 +142,8 @@ ol {
     border-radius: 4px;
     cursor: pointer;
     outline: none;
+}
+
+.upd_del {
+    margin-top: -15px;
 }

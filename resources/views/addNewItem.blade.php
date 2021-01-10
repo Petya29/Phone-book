@@ -32,6 +32,9 @@
                     <select name="category">
                         <option>Student</option>
                         <option>Programmer</option>
+                        <option>Teacher</option>
+                        <option>Driver</option>
+                        <option>Another</option>
                     </select>
 
                     <button type="submit" class="Btn addBtn">Create new</button>
