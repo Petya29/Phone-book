@@ -9,7 +9,7 @@ use App;
 class mainController extends Controller
 {
     public function index() {
-        $items = App\Models\bookItem::all();   // with model
+        $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);   // with model
         return view('main', compact('items'));
     }
 
@@ -68,4 +68,14 @@ class mainController extends Controller
 
         return view('main', compact('items'));
     }
+
+    public function sortByName() {
+            $items = bookItem::orderBy('name')->simplePaginate(5);
+            return view('main', compact('items'));
+    }
+
+    public function sortBySurname() {
+        $items = bookItem::orderBy('surname')->simplePaginate(5);
+        return view('main', compact('items'));
+}
 }

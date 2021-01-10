@@ -4,6 +4,7 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
+
 li {
     list-style-type: none;
 }
@@ -48,6 +49,11 @@ ol {
     width: 18%;
     border-right: 2px solid black;
     padding: 15px 0;
+}
+
+.Phonebook_nav span a {
+    text-decoration: none;
+    color: black;
 }
 
 .Phonebook_nav span:last-child {

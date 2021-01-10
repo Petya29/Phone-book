@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\mainController;
 
-Route::get('/', [mainController::class, 'index']);
+Route::get('/', [mainController::class, 'index'])->name('sortById');
 
 Route::post('/', [mainController::class, 'submitForm']);
 
@@ -17,3 +17,7 @@ Route::post('/item/{id}/update', [mainController::class, 'updateItemSubmit'])->n
 Route::get('/del/{id}', [mainController::class, 'deleteItem'])->name('delete-item');
 
 Route::get('/search', [mainController::class, 'siteSearch'])->name('site-search');
+
+Route::get('/sortedByName', [mainController::class, 'sortByName'])->name('sortByName');
+
+Route::get('/sortedBySurname', [mainController::class, 'sortBySurname'])->name('sortBySurname');

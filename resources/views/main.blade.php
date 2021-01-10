@@ -19,9 +19,21 @@
         <div class="items">
             <span class="Phonebook_header">PhoneBook</span>
             <div class="Phonebook_nav">
-                <span>id</span>
-                <span>Name</span>
-                <span>Surname</span>
+                <span>
+                    <a href="{{ route('sortById') }}">
+                        id
+                    </a>
+                </span>
+                <span>
+                    <a href="{{ route('sortByName') }}">
+                        Name
+                    </a>
+                </span>
+                <span>
+                    <a href="{{ route('sortBySurname') }}">
+                        Surname
+                    </a>
+                </span>
                 <span>Email</span>
                 <span>Phone</span>
                 <span>Category</span>
@@ -54,6 +66,8 @@
             </div>
         </div>
     </div>
+
+    {{ $items->links() }}
     
     <script src="{{ asset("js/main.js") }}"></script>
 </body>
