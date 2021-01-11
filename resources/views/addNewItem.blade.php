@@ -12,20 +12,33 @@
     <div class="wrapper">
         <div class="newItems">
             <span class="Phonebook_header">Create new item</span>
+
             <form action="/" class="createNewItem" method="POST">
                 @csrf
 
                     <label for="name">Name:</label>
-                    <input type="text" placeholder="Enter name" name="name"><br>
+                    <input type="text" placeholder="Enter name" name="name" id="name"><br>
+                    @error('name')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="surname">Surname:</label>
-                    <input type="text" placeholder="Enter surname" name="surname"><br>
+                    <input type="text" placeholder="Enter surname" name="surname" id="surname"><br>
+                    @error('surname')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="email">Email:</label>
-                    <input type="text" placeholder="Enter email" name="email"><br>
+                    <input type="text" placeholder="Enter email" name="email" id="email"><br>
+                    @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="phone">Phone:</label>
-                    <input type="text" placeholder="Enter phone" name="phone"><br>
+                    <input type="text" placeholder="Enter phone" name="phone" id="phone"><br>
+                    @error('phone')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="category">Category:</label>
                     {{-- <input type="text" placeholder="Enter category" name="category"><br> --}}

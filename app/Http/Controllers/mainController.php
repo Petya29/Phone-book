@@ -22,9 +22,19 @@ class mainController extends Controller
         $newItem->phone = $req->input('phone');
         $newItem->category = $req->get('category');
 
+        $rules = [
+            'name' => 'required|min:1|max:15',
+            'surname' => 'required|min:1|max:15',
+            'email' => 'required|unique:bookItem|min:1|max:50',
+            'phone' => '|required|unique:bookItem|min:1|max:15',
+            'category' => 'required'
+        ];
+
+        $this->validate($req, $rules);
+
         $newItem->save();
 
-        return redirect('/');
+        return redirect()->route('sortById');
     }
 
     public function addNew() {
@@ -44,6 +54,17 @@ class mainController extends Controller
         $newItem->phone = $req->input('phone');
         $newItem->category = $req->get('category');
 
+        $rules = [
+            'name' => 'required|min:1|max:15',
+            'surname' => 'required|min:1|max:15',
+            'email' => 'required|min:1|max:50',
+            'phone' => '|required|min:1|max:15',
+            'category' => 'required'
+        ];
+
+        $this->validate($req, $rules);
+
+
         $newItem->save();
 
         return redirect('/');
@@ -51,9 +72,8 @@ class mainController extends Controller
 
     public function deleteItem($id) {
         bookItem::find($id)->delete();
-        
-        $items = App\Models\bookItem::all();   // with model
-        return view('main', compact('items'));
+        //return "<script type='text/javascript'>alert('asd');</script>";
+        return redirect()->route('sortById');
     }
 
     public function siteSearch(Request $req) {

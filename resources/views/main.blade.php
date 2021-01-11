@@ -65,7 +65,7 @@
                                     <button>&#9998;</button>
                                 </a>
                                 <a href="{{ route('delete-item', $item->id) }}">
-                                    <button>&#10006;</button>
+                                    <button id="BtnDel">&#10006;</button>
                                 </a>
                             </div>    
                         </li>
@@ -87,6 +87,7 @@
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
     <script>
+
         $('#Btn_category').click(function (e) {
         
         let category = $('#chooseCategory').val()
@@ -118,7 +119,6 @@
                     $('#liToChange').prepend("<span id='nameToChange'>" + element.name + "</span>")
                     $('#liToChange').prepend("<span id='idToChange'>" + element.id + "</span>")
                 });
-
             }
         });
 

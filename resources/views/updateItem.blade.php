@@ -17,18 +17,29 @@
 
                     <label for="name">Name:</label>
                     <input type="text" placeholder="Enter name" name="name" value="{{ $data->name }}"><br>
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="surname">Surname:</label>
                     <input type="text" placeholder="Enter surname" name="surname" value="{{ $data->surname }}"><br>
+                    @error('surname')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="email">Email:</label>
                     <input type="text" placeholder="Enter email" name="email" value="{{ $data->email }}"><br>
+                    @error('email')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="phone">Phone:</label>
                     <input type="text" placeholder="Enter phone" name="phone" value="{{ $data->phone }}"><br>
+                    @error('phone')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
                     <label for="category">Category:</label>
-                    {{-- <input type="text" placeholder="Enter category" name="category" value="{{ $data->category }}"><br> --}}
                     <select name="category" autofocus="{{ $data->category }}">
                         <option>Student</option>
                         <option>Programmer</option>
