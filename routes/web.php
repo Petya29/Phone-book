@@ -21,3 +21,5 @@ Route::get('/search', [mainController::class, 'siteSearch'])->name('site-search'
 Route::get('/sortedByName', [mainController::class, 'sortByName'])->name('sortByName');
 
 Route::get('/sortedBySurname', [mainController::class, 'sortBySurname'])->name('sortBySurname');
+
+Route::get('/filterByCategory', [mainController::class, 'filterByCategory'])->name('filterByCategory');

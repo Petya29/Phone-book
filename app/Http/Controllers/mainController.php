@@ -8,6 +8,7 @@ use App;
 
 class mainController extends Controller
 {
+    
     public function index() {
         $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);   // with model
         return view('main', compact('items'));
@@ -64,7 +65,7 @@ class mainController extends Controller
 
         $items = bookItem::where('name', 'LIKE', "%{$query}%")
         ->orWhere('phone', 'LIKE', "%{$query}%")
-        ->get();
+        ->simplePaginate(5);
 
         return view('main', compact('items'));
     }
@@ -77,5 +78,17 @@ class mainController extends Controller
     public function sortBySurname() {
         $items = bookItem::orderBy('surname')->simplePaginate(5);
         return view('main', compact('items'));
-}
+    }
+
+    public function filterByCategory(Request $req) {
+            $category = $req->get('category');
+            if($category == 'All categories'){
+                $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);
+            }else{
+                $items = bookItem::where('category', 'LIKE', "{$category}")->simplePaginate(5);
+            }
+
+            return response()->json(['items' => $items]);
+    }
+
 }

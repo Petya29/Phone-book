@@ -175,3 +175,15 @@ ol {
     background-color: rgb(123, 206, 206);
     border-radius: 5px;
 }
+
+.chooseCategory {
+    margin: -6px;
+    padding: 6px;
+    outline: none;
+    cursor: pointer;
+}
+
+#Btn_category {
+    padding: 5px 10px;
+    margin: -5px 0 -5px 5px;
+}
