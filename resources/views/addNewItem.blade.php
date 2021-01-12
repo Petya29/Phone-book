@@ -36,10 +36,10 @@
                 <label for="exampleInputPassword4">Category: </label>
                 {{-- <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Enter phone"> --}}
                 <select name="category" id="exampleInputPassword4">
-                    <option>Student</option>
-                    <option>Programmer</option>
-                    <option>Teacher</option>
-                    <option>Another</option>
+                    <option value="1">Student</option>
+                    <option value="2">Programmer</option>
+                    <option value="3">Teacher</option>
+                    <option value="4">Another</option>
                 </select>
             </div>
             <a href="/">

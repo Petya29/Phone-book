@@ -1,5 +1,5 @@
 <table class="table table-striped">
-    <thead>
+    <thead id="prependTo">
         <tr>
           <th scope="col">
             <a href="{{ route('sortById') }}" class="sort-links">id</a>
@@ -14,19 +14,18 @@
           <th scope="col">phone</th>
           <th scope="col">
             <select class="chooseCategory" id="chooseCategory">
-                    <option>All categories</option>
-                    <option>Student</option>
-                    <option>Programmer</option>
-                    <option>Teacher</option>
-                    <option>Another</option>
+                    <option value="0">All categories</option>
+                    @foreach ($categories as $category)
+                        <option value="{{$category->id}}">{{$category->category}}</option>
+                    @endforeach
             </select>
             <button type="submit" id="Btn_category" class="btn btn-dark">ok</button>
           </th>
         </tr>
       </thead>
-      <tbody>
-        @foreach ($items as $item)
+      <tbody id="toChange">
         <tr>
+        @foreach ($items as $item)
             <th scope="row">{{ $item->id }}</th>
             <td>{{ $item->name }}</td>
             <td>{{ $item->surname }}</td>
@@ -72,27 +71,29 @@
             
                 $.ajax({
                     url: "{{ route('filterByCategory') }}",
+                    // url: "/filterByCategory",
                     type: "GET",
                     data: {
                         category: category
                     },
                     success: function(result) {
                         let arr = result.items.data
-                        $("#toRemove").remove()
-                        $('#toAppend').prepend('<div id="toRemove">')
+                        $("#toChange").remove()
+                        $("#prependTo").after("<tbody id='toChange'></tbody>")
+
                         arr.forEach(element => {
-                            $('#toRemove').prepend('<li id="liToChange">')
-                            $('#liToChange').prepend("<div class='upd_del'>" + "<a href='{{ route('item-update', $item->id) }}'>" + "<button>&#9998;</button>" + "<a href='{{ route('delete-item', $item->id) }}'>" + "<button>&#10006;</button>")
-                            $('#liToChange').prepend("<span id='categoryToChange'>" + element.category + "</span>")
-                            $('#liToChange').prepend("<span id='phoneidToChange'>" + element.phone + "</span>")
-                            $('#liToChange').prepend("<span id='emailToChange'>" + element.email + "</span>")
-                            $('#liToChange').prepend("<span id='surnameToChange'>" + element.surname + "</span>")
-                            $('#liToChange').prepend("<span id='nameToChange'>" + element.name + "</span>")
-                            $('#liToChange').prepend("<span id='idToChange'>" + element.id + "</span>")
+                            $("#toChange").prepend("<tr id='appendTo'></tr>")
+                            $("#appendTo").prepend("<td><div class='upd_del'><a href='{{ route('item-update', $item->id) }}'><button>&#9998;</button></a><a href='{{ route('delete-item', $item->id) }}'><button>&#10006;</button></a>")
+                            $("#appendTo").prepend("<td>" + element.category.category)
+                            $("#appendTo").prepend("<td>" + element.phone)
+                            $("#appendTo").prepend("<td>" + element.email)
+                            $("#appendTo").prepend("<td>" + element.surname)
+                            $("#appendTo").prepend("<td>" + element.name)
+                            $("#appendTo").prepend("<th>" + element.id)
                         });
                     }
                 })
             })
     </script>
 
-    {{-- <script src="{{ asset("js/main.js") }}"></script> --}}
+    <script src="{{ asset("js/main.js") }}"></script>

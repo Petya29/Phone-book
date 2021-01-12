@@ -13,8 +13,8 @@ class mainController extends Controller
     
     public function index() {
         $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);   // with model
-        //$items = Categories::find(1)->getbookItems()->simplePaginate(5);
-        return view('main', compact('items'));
+        $categories = Categories::orderBy('id')->get();
+        return view('main', compact('items', 'categories'));
     }
 
     public function submitForm(Request $req) {
@@ -23,15 +23,7 @@ class mainController extends Controller
         $newItem->surname = $req->input('surname');
         $newItem->email = $req->input('email');
         $newItem->phone = $req->input('phone');
-        if($req->get('category') == 'Student') {
-            $newItem->category_id = '1';
-        }elseif($req->get('category') == 'Programmer'){
-            $newItem->category_id = '2';
-        }elseif($req->get('category') == 'Teacher'){
-            $newItem->category_id = '3';
-        }elseif($req->get('category') == 'Another'){
-            $newItem->category_id = '4';
-        }
+        $newItem->category_id = $req->get('category');
 
         $rules = [
             'name' => 'required|min:1|max:15',
@@ -63,15 +55,7 @@ class mainController extends Controller
         $newItem->surname = $req->input('surname');
         $newItem->email = $req->input('email');
         $newItem->phone = $req->input('phone');
-        if($req->get('category') == 'Student') {
-            $newItem->category_id = '1';
-        }elseif($req->get('category') == 'Programmer'){
-            $newItem->category_id = '2';
-        }elseif($req->get('category') == 'Teacher'){
-            $newItem->category_id = '3';
-        }elseif($req->get('category') == 'Another'){
-            $newItem->category_id = '4';
-        }
+        $newItem->category_id = $req->get('category');
 
         $rules = [
             'name' => 'required|min:1|max:15',
@@ -107,26 +91,32 @@ class mainController extends Controller
         ->orWhere('phone', 'LIKE', "%{$query}%")
         ->simplePaginate(5);
 
-        return view('main', compact('items'));
+        $categories = Categories::orderBy('id')->get();
+
+        return view('main', compact('items', 'categories'));
     }
 
     public function sortByName() {
         $items = bookItem::orderBy('name')->simplePaginate(5);
-        return view('main', compact('items'));
+        $categories = Categories::orderBy('id')->get();
+
+        return view('main', compact('items', 'categories'));
     }
 
     public function sortBySurname() {
         $items = bookItem::orderBy('surname')->simplePaginate(5);
-        return view('main', compact('items'));
+        $categories = Categories::orderBy('id')->get();
+
+        return view('main', compact('items', 'categories'));
     }
 
     public function filterByCategory(Request $req) {
-            $category = $req->get('category');
+            $category_id = $req->get('category');
 
-            if($category == 'All categories'){
-                $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);
+            if($category_id == '0'){
+                $items = App\Models\bookItem::orderBy('id')->with('category')->simplePaginate(5);
             }else{
-                $items = bookItem::where('category', 'LIKE', "{$category}")->simplePaginate(5);
+                $items = bookItem::where('category_id', '=', $category_id)->with('category')->simplePaginate(5);
             }
 
             return response()->json(['items' => $items]);
