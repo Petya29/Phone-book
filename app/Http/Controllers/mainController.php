@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\bookItem;
+use App\Models\Categories;
 use App; 
 
 class mainController extends Controller
@@ -11,6 +12,7 @@ class mainController extends Controller
     
     public function index() {
         $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);   // with model
+        //$items = Categories::find(1)->bookItems()->simplePaginate(5);
         return view('main', compact('items'));
     }
 
@@ -72,7 +74,7 @@ class mainController extends Controller
 
     public function deleteItem($id) {
         bookItem::find($id)->delete();
-        //return "<script type='text/javascript'>alert('asd');</script>";
+        //return "<script type='text/javascript'>alert('item was delete');</script>";
         return redirect()->route('sortById');
     }
 

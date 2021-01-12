@@ -19,7 +19,7 @@ class CreateBookItemTable extends Migration
             $table->text('surname');
             $table->text('phone');
             $table->text('email');
-            $table->text('category');
+            $table->text('category_id');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent();
         });
