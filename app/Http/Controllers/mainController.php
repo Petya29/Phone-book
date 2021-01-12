@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\bookItem;
 use App\Models\Categories;
-use App; 
+use App;
+use Mockery\Undefined;
 
 class mainController extends Controller
 {
@@ -89,16 +90,17 @@ class mainController extends Controller
     }
 
     public function deleteItem($id) {
+        $item = bookItem::find($id);
         bookItem::find($id)->delete();
         
-        return redirect()->route('sortById');
+        return redirect()->route('sortById')->with('success', 'item was delete');
     }
 
     public function siteSearch(Request $req) {
         $query = $req->input('query');
 
         if(!$query){
-            return redirect()->route('sortById')->with('message', 'redirect!');
+            return redirect()->route('sortById');
         }
 
         $items = bookItem::where('name', 'LIKE', "%{$query}%")
@@ -120,6 +122,7 @@ class mainController extends Controller
 
     public function filterByCategory(Request $req) {
             $category = $req->get('category');
+
             if($category == 'All categories'){
                 $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);
             }else{

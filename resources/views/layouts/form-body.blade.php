@@ -1,54 +1,56 @@
-<div class="phoneBookForm">
-    <ol id="toAppend">
-        <div id="toRemove">
+<table class="table table-striped">
+    <thead>
+        <tr>
+          <th scope="col">
+            <a href="{{ route('sortById') }}" class="sort-links">id</a>
+          </th>
+          <th scope="col">
+            <a href="{{ route('sortByName') }}" class="sort-links">name</a>
+          </th>
+          <th scope="col">
+            <a href="{{ route('sortBySurname') }}" class="sort-links">surname </a>
+          </th>
+          <th scope="col">email</th>
+          <th scope="col">phone</th>
+          <th scope="col">
+            <select class="chooseCategory" id="chooseCategory">
+                    <option>All categories</option>
+                    <option>Student</option>
+                    <option>Programmer</option>
+                    <option>Teacher</option>
+                    <option>Another</option>
+            </select>
+            <button type="submit" id="Btn_category" class="btn btn-dark">ok</button>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
         @foreach ($items as $item)
-            <li id="liToChange">
-                <span id="idToChange">{{ $item->id }}</span>
-                <span id="nameToChange">{{ $item->name }}</span>
-                <span id="surnameToChange">{{ $item->surname }}</span>
-                <span id="emailToChange">{{ $item->email }}</span>
-                <span id="phoneToChange">{{ $item->phone }}</span>
-                <span id="categoryToChange">
-                    {{-- {{ $item->category_id }} --}}
-                    @if ($item->category_id == "1")
-                        Student
-                    @elseif($item->category_id == "2")
-                        Programmer
-                    @elseif($item->category_id == "3")
-                        Teacher
-                    @elseif($item->category_id == "4")
-                        Another
-                    @endif
-                </span>
+        <tr>
+            <th scope="row">{{ $item->id }}</th>
+            <td>{{ $item->name }}</td>
+            <td>{{ $item->surname }}</td>
+            <td>{{ $item->email }}</td>
+            <td>{{ $item->phone }}</td>
+            <td>{{ $item->category->category }}</td> 
+            <td>
                 <div class="upd_del">
-                    <a href="{{ route('item-update', $item->id) }}">
-                        <button>&#9998;</button>
-                    </a>
-                    <a href="{{ route('delete-item', $item->id) }}">
-                        <button id="BtnDel">&#10006;</button>
-                    </a>
-                </div>    
-            </li>
+                <a href="{{ route('item-update', $item->id) }}">
+                    <button>&#9998;</button>
+                </a>
+                <a href="{{ route('delete-item', $item->id) }}">
+                    <button id="BtnDel">&#10006;</button>
+                </a>
+                </div>
+            </td>   
+        </tr>
         @endforeach
-        </div>
-    </ol>
-
-    <a href="/addNew">
-        <button type="button" class="Btn">Add New</button>
-    </a>
-</div>
-
-{{-- <table class="table table-striped">
-    <tr>
-        <td>id</td>
-        <td>name</td>
-        <td>surname</td>
-        <td>email</td>
-        <td>phone</td>
-        <td>category</td>
-    </tr> --}}
-
+      </tbody>
 </table>
+
+<a href="/addNew">
+    <button type="button" class="btn btn-success">Add new</button>
+</a>
 
 <script src="https://code.jquery.com/jquery-3.5.1.js"
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
@@ -57,9 +59,10 @@
     <script>
             console.log('js ready')
             $('#Btn_category').click(function (e) {
-                console.log('ajax')
+
                 let category = $('#chooseCategory').val()
-            
+                console.log(category)
+
                 $.ajaxSetup({
                     headers:
                         {

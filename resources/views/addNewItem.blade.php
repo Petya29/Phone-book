@@ -1,63 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset("css/style.css") }}">
-    <title>My phone book</title>
-</head>
-<body>
+    @extends('phone-book-form.layout')
 
     <div class="wrapper">
-        <div class="newItems">
-            <span class="Phonebook_header">Create new item</span>
 
-            <form action="/" class="createNewItem" method="POST">
-                @csrf
-
-                    <label for="name">Name:</label>
-                    <input type="text" placeholder="Enter name" name="name" id="name"><br>
-                    @error('name')
-                        <span class="text-danger">{{ $message }}</span>
-                    @enderror
-
-                    <label for="surname">Surname:</label>
-                    <input type="text" placeholder="Enter surname" name="surname" id="surname"><br>
-                    @error('surname')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-
-                    <label for="email">Email:</label>
-                    <input type="text" placeholder="Enter email" name="email" id="email"><br>
-                    @error('email')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-
-                    <label for="phone">Phone:</label>
-                    <input type="text" placeholder="Enter phone" name="phone" id="phone"><br>
-                    @error('phone')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
-
-                    <label for="category">Category:</label>
-                    {{-- <input type="text" placeholder="Enter category" name="category"><br> --}}
-                    <select name="category">
-                        <option>Student</option>
-                        <option>Programmer</option>
-                        <option>Teacher</option>
-                        <option>Another</option>
-                    </select>
-
-                    <button type="submit" class="Btn addBtn">Create new</button>
-
-            </form>
-
+        <form action="/" class="createNewItem" method="POST">
+            @csrf
+            <div class="form-group">
+                <label for="exampleInputEmail1">Name:</label>
+                <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Enter name">
+                @error('name')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword2">Surname: </label>
+                <input type="text" name="surname" class="form-control" id="exampleInputPassword2" placeholder="Enter surname">
+                @error('surname')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword3">Email: </label>
+                <input type="text" name="email" class="form-control" id="exampleInputPassword3" placeholder="Enter email">
+                @error('email')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">Phone: </label>
+                <input type="text" name="phone" class="form-control" id="exampleInputPassword4" placeholder="Enter phone">
+                @error('phone')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            <div class="form-group">
+                <label for="exampleInputPassword4">Category: </label>
+                {{-- <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Enter phone"> --}}
+                <select name="category" id="exampleInputPassword4">
+                    <option>Student</option>
+                    <option>Programmer</option>
+                    <option>Teacher</option>
+                    <option>Another</option>
+                </select>
+            </div>
             <a href="/">
-                <button class="backBtn">&larr; main page</button>
+                <button type="submit" class="btn btn-primary btn-update">Submit</button>
             </a>
+            <a href="/">
+                <button type="button" class="btn btn-primary btn-update">&larr; main page</button>
+            </a>
+        </form>
 
-        </div>
     </div>
     
     <script
@@ -65,5 +57,3 @@
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
     <script src="{{ asset("js/main.js") }}"></script>
-</body>
-</html>

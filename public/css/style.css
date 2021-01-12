@@ -9,7 +9,7 @@ li {
     list-style-type: none;
 }
 
-ol {
+ul {
     margin: 0;
     padding: 0;
 }
@@ -21,17 +21,16 @@ ol {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: -50px;
 }
 
-.items {
+/* .items {
     margin: 25px 0;
     border: 2px solid black;
     border-radius: 5px;
     width: 80%;
-}
+} */
 
-.Phonebook_header {
+/* .Phonebook_header {
     display: block;
     text-align: center;
     border-bottom: 2px solid black;
@@ -45,7 +44,7 @@ ol {
 }
 
 .Phonebook_nav span {
-    /* text-align: center; */
+    text-align: center;
     display: inline-block;
     width: 18%;
     border-right: 2px solid black;
@@ -151,14 +150,6 @@ ol {
     outline: none;
 }
 
-.upd_del {
-    margin-top: -15px;
-}
-
-.upd_del a {
-    text-decoration: none;
-}
-
 .siteSearch {
     text-align: center;
     margin-top: 25px;
@@ -187,8 +178,21 @@ ol {
 #Btn_category {
     padding: 5px 10px;
     margin: -5px 0 -5px 5px;
+} */
+
+.upd_del a {
+    text-decoration: none;
 }
 
 .page-links {
-    margin-top: -50px;
+    margin-top: 25px;
+}
+
+.sort-links {
+    color: black;
+    text-decoration: none;
+}
+
+.btn-update {
+    margin-top: 10px;
 }
