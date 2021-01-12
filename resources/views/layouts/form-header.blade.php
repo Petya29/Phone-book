@@ -23,7 +23,6 @@
                             <option>Student</option>
                             <option>Programmer</option>
                             <option>Teacher</option>
-                            <option>Driver</option>
                             <option>Another</option>
                     </select>
                         <button type="submit" id="Btn_category">ok</button>

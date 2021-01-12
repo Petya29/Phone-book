@@ -9,9 +9,11 @@ class Categories extends Model
 {
     protected $table = 'Categories'; // define table name
 
-    public function bookItems() {
+    use HasFactory;
+
+    public function getbookItems() {
         return $this->hasMany('App\Models\bookItem', 'category_id', 'id');
     }
 
-    use HasFactory;
+
 }

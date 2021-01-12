@@ -21,6 +21,7 @@ ol {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: -50px;
 }
 
 .items {
@@ -186,4 +187,8 @@ ol {
 #Btn_category {
     padding: 5px 10px;
     margin: -5px 0 -5px 5px;
+}
+
+.page-links {
+    margin-top: -50px;
 }

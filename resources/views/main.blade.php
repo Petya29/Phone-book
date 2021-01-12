@@ -12,4 +12,6 @@
         </div>
     </div>
 
-    {{ $items->links() }}
+    <div class="page-links">
+        {{ $items->links() }}
+    </div>

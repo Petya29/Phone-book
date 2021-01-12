@@ -46,7 +46,6 @@
                         <option>Student</option>
                         <option>Programmer</option>
                         <option>Teacher</option>
-                        <option>Driver</option>
                         <option>Another</option>
                     </select>
 

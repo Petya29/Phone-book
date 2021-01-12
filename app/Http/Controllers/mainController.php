@@ -12,7 +12,7 @@ class mainController extends Controller
     
     public function index() {
         $items = App\Models\bookItem::orderBy('id')->simplePaginate(5);   // with model
-        //$items = Categories::find(1)->bookItems()->simplePaginate(5);
+        //$items = Categories::find(1)->getbookItems()->simplePaginate(5);
         return view('main', compact('items'));
     }
 
@@ -22,7 +22,15 @@ class mainController extends Controller
         $newItem->surname = $req->input('surname');
         $newItem->email = $req->input('email');
         $newItem->phone = $req->input('phone');
-        $newItem->category = $req->get('category');
+        if($req->get('category') == 'Student') {
+            $newItem->category_id = '1';
+        }elseif($req->get('category') == 'Programmer'){
+            $newItem->category_id = '2';
+        }elseif($req->get('category') == 'Teacher'){
+            $newItem->category_id = '3';
+        }elseif($req->get('category') == 'Another'){
+            $newItem->category_id = '4';
+        }
 
         $rules = [
             'name' => 'required|min:1|max:15',
@@ -54,7 +62,15 @@ class mainController extends Controller
         $newItem->surname = $req->input('surname');
         $newItem->email = $req->input('email');
         $newItem->phone = $req->input('phone');
-        $newItem->category = $req->get('category');
+        if($req->get('category') == 'Student') {
+            $newItem->category_id = '1';
+        }elseif($req->get('category') == 'Programmer'){
+            $newItem->category_id = '2';
+        }elseif($req->get('category') == 'Teacher'){
+            $newItem->category_id = '3';
+        }elseif($req->get('category') == 'Another'){
+            $newItem->category_id = '4';
+        }
 
         $rules = [
             'name' => 'required|min:1|max:15',
@@ -69,12 +85,12 @@ class mainController extends Controller
 
         $newItem->save();
 
-        return redirect('/');
+        return redirect()->route('sortById');
     }
 
     public function deleteItem($id) {
         bookItem::find($id)->delete();
-        //return "<script type='text/javascript'>alert('item was delete');</script>";
+        
         return redirect()->route('sortById');
     }
 
@@ -82,7 +98,7 @@ class mainController extends Controller
         $query = $req->input('query');
 
         if(!$query){
-            return redirect('/');
+            return redirect()->route('sortById')->with('message', 'redirect!');
         }
 
         $items = bookItem::where('name', 'LIKE', "%{$query}%")
@@ -93,8 +109,8 @@ class mainController extends Controller
     }
 
     public function sortByName() {
-            $items = bookItem::orderBy('name')->simplePaginate(5);
-            return view('main', compact('items'));
+        $items = bookItem::orderBy('name')->simplePaginate(5);
+        return view('main', compact('items'));
     }
 
     public function sortBySurname() {
