@@ -15,4 +15,8 @@ class bookItem extends Model
         return $this->belongsTo('App\Models\Categories', 'category_id', 'id');
     }
 
+    public function roles() {
+        return $this->belongsToMany('App\Models\Role', 'roles_book_item', 'bookItem_id', 'role_id');
+    }
+
 }

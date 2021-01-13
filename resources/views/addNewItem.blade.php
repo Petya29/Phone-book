@@ -2,7 +2,7 @@
 
     <div class="wrapper">
 
-        <form action="/" class="createNewItem" method="POST">
+        <form action="/" class="createNewItem" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="exampleInputEmail1">Name:</label>
@@ -41,6 +41,22 @@
                     <option value="3">Teacher</option>
                     <option value="4">Another</option>
                 </select>
+            </div>
+            Role:
+            @foreach ($roles as $role)
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="{{ $role->id }}" id="defaultCheck1" name="roles[]">
+                <label class="form-check-label" for="defaultCheck1">{{ $role->name }}</label>
+                @error('role')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
+            </div>
+            @endforeach
+            <div class="input-group mb-3">
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile02" name="photo" accept="image/png">
+                  <label class="custom-file-label" for="inputGroupFile02">Choose photo in png</label>
+                </div>
             </div>
             <a href="/">
                 <button type="submit" class="btn btn-primary btn-update">Submit</button>

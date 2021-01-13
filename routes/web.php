@@ -23,3 +23,4 @@ Route::get('/sortedByName', [mainController::class, 'sortByName'])->name('sortBy
 Route::get('/sortedBySurname', [mainController::class, 'sortBySurname'])->name('sortBySurname');
 
 Route::get('/filterByCategory', [mainController::class, 'filterByCategory'])->name('filterByCategory');
+

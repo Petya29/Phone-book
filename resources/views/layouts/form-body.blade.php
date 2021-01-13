@@ -21,6 +21,7 @@
             </select>
             <button type="submit" id="Btn_category" class="btn btn-dark">ok</button>
           </th>
+          <th scope="col">Roles</th>
         </tr>
       </thead>
       <tbody id="toChange">
@@ -32,6 +33,7 @@
             <td>{{ $item->email }}</td>
             <td>{{ $item->phone }}</td>
             <td>{{ $item->category->category }}</td> 
+            <td>{{ $item->roles->pluck('name')->implode('') }}</td>   {{-- pluck('key') - извлекает все значения по заданому ключу --}}
             <td>
                 <div class="upd_del">
                 <a href="{{ route('item-update', $item->id) }}">
@@ -84,6 +86,7 @@
                         arr.forEach(element => {
                             $("#toChange").prepend("<tr id='appendTo'></tr>")
                             $("#appendTo").prepend("<td><div class='upd_del'><a href='{{ route('item-update', $item->id) }}'><button>&#9998;</button></a><a href='{{ route('delete-item', $item->id) }}'><button>&#10006;</button></a>")
+                            $("#appendTo").prepend("<td>" + element.roles) // ???????????
                             $("#appendTo").prepend("<td>" + element.category.category)
                             $("#appendTo").prepend("<td>" + element.phone)
                             $("#appendTo").prepend("<td>" + element.email)
