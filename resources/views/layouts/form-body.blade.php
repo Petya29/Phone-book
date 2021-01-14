@@ -86,7 +86,10 @@
                         arr.forEach(element => {
                             $("#toChange").prepend("<tr id='appendTo'></tr>")
                             $("#appendTo").prepend("<td><div class='upd_del'><a href='{{ route('item-update', $item->id) }}'><button>&#9998;</button></a><a href='{{ route('delete-item', $item->id) }}'><button>&#10006;</button></a>")
-                            $("#appendTo").prepend("<td>" + element.roles) // ???????????
+                            for(let i = 0; i < element.roles.length; i++){
+                                console.log(element.roles[i].name)
+                                $("#appendTo").prepend("<td>" + element.roles[i].name)
+                            }
                             $("#appendTo").prepend("<td>" + element.category.category)
                             $("#appendTo").prepend("<td>" + element.phone)
                             $("#appendTo").prepend("<td>" + element.email)

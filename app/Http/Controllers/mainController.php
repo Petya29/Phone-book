@@ -139,9 +139,9 @@ class mainController extends Controller
             $category_id = $req->get('category');
 
             if($category_id == '0'){
-                $items = App\Models\bookItem::orderBy('id')->with('category')->simplePaginate(5);
+                $items = App\Models\bookItem::orderBy('id')->with('category', 'roles')->simplePaginate(5);
             }else{
-                $items = bookItem::where('category_id', '=', $category_id)->with('category')->simplePaginate(5);
+                $items = bookItem::where('category_id', '=', $category_id)->with('category', 'roles')->simplePaginate(5);
             }
 
             return response()->json(['items' => $items]);
